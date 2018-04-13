@@ -1,5 +1,6 @@
 package by.dm13y.sketch.concurrency.forkjointhreadpool.recursive_action;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 
@@ -28,6 +29,17 @@ public class ForkJoinPollExecutor {
             return 4000;
         });
 
+        Callable<Integer> exceptionCallable = () -> {
+            Thread.currentThread().sleep(100);
+            if(true){
+                throw new Exception();
+            }
+            return 1000;
+        };
+
+        pool.submit(ForkJoinTask.adapt(exceptionCallable));
+
+
 
         pool.submit(task1);
         System.out.println("recursiveAction1 is submit (current thread is not wait execution)");
@@ -40,6 +52,13 @@ public class ForkJoinPollExecutor {
         pool.invoke(task6);
         Integer val1 = task6.get();
         System.out.println("forkjointask2 is done " + val1);
+
+
+        try {
+            Integer exceptionVal = exceptionCallable.call();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }
