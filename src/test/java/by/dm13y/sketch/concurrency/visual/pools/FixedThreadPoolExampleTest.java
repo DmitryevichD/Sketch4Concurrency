@@ -1,9 +1,8 @@
-package by.dm13y.sketch.concurrency.pools;
+package by.dm13y.sketch.concurrency.visual.pools;
 
 import org.junit.Test;
 
 import static java.lang.Thread.sleep;
-import static org.junit.Assert.*;
 
 public class FixedThreadPoolExampleTest {
     @Test

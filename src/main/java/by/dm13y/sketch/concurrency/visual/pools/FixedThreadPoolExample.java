@@ -1,4 +1,4 @@
-package by.dm13y.sketch.concurrency.pools;
+package by.dm13y.sketch.concurrency.visual.pools;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
